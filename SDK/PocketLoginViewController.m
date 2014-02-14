@@ -55,7 +55,7 @@
 {
     if ([request.URL.absoluteString hasPrefix:[[PocketAPI sharedAPI] URLScheme]]) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        [self dismissViewControllerAnimated:NO completion:nil];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
     return YES;
 }
