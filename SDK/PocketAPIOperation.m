@@ -262,6 +262,9 @@ NSString *PocketAPINameForHTTPMethod(PocketAPIHTTPMethod method){
 			
 			NSString *token = [responseDict objectForKey:@"access_token"];
 			
+			[[NSUserDefaults standardUserDefaults] setObject:token forKey:@"pocketAccessToken"];
+			[[NSUserDefaults standardUserDefaults] synchronize];
+
 			if((id)username == [NSNull null] && (id)token == [NSNull null]){
 				[self.delegate pocketAPI:self.API hadLoginError:[NSError errorWithDomain:@"PocketAPI" code:404 userInfo:nil]];
 			}else{
