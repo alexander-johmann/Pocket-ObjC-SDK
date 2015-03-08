@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "PocketAPI"
-  s.version      = "1.0.3"
+  s.version      = "1.0.4"
   s.summary      = "Objective-C SDK for authenticating and making API calls to the Pocket API."
   s.description  = <<-DESC
                    The Pocket SDK is the fastest way to add Pocket integration to any iOS or Mac
@@ -16,8 +16,8 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '4.3'
   s.osx.deployment_target = '10.6'
   s.requires_arc = false
-
-  s.source_files = 'SDK/**/*.{h,m,xib}'
+  s.source_files = 'SDK/**/*.{h,m}'
+	s.resources = 'SDK/**/PocketLoginViewController.xib'
   s.public_header_files = 'SDK/**/PocketAPI*.h'
   s.frameworks = 'Foundation', 'Security'
 end
