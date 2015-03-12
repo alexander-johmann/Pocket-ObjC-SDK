@@ -300,7 +300,8 @@ static PocketAPI *sSharedAPI = nil;
 		} else if ([[url path] isEqualToString:@"/login"] && [urlQuery objectForKey:@"url"]) {
             PocketLoginViewController *loginViewController = [[[PocketLoginViewController alloc] initWithNibName:@"PocketLoginViewController" bundle:nil] autorelease];
             loginViewController.url = urlQuery[@"url"];
-            loginViewController.modalTransitionStyle = UIModalPresentationPageSheet;
+			      loginViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
+						//loginViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
             UIViewController *frontViewController = [self topViewController];
              [frontViewController presentViewController:loginViewController animated:YES completion:nil];
             return YES;

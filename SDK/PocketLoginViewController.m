@@ -28,7 +28,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.webView.delegate = self;
+
+	self.webView.delegate = self;
+	//NSLog(@"URL: %@", self.url);
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
 }
 
@@ -62,6 +64,10 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+
+	//NSString *html = [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
+	//NSLog(@"%@", html);
+	
 }
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {

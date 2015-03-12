@@ -11,5 +11,5 @@
 @interface PocketLoginViewController : UIViewController
 @property (retain, nonatomic) IBOutlet UIWebView *webView;
 @property (retain, nonatomic) NSString *url;
-- (IBAction)cancelClicked:(id)sender;
+@property (unsafe_unretained, nonatomic) IBOutlet UIView *statusBarBackground;
 @end
