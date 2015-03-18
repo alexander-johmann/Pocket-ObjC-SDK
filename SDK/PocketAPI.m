@@ -28,7 +28,6 @@
 #import <dispatch/dispatch.h>
 #import <sys/sysctl.h>
 #import <CommonCrypto/CommonDigest.h>
-#import "PocketLoginViewController.h"
 
 #define POCKET_SDK_VERSION @"1.0.2"
 
@@ -297,15 +296,7 @@ static PocketAPI *sSharedAPI = nil;
 				[login _setRequestToken:requestToken];
 				[login _setReverseAuth:YES];
 			}
-		} else if ([[url path] isEqualToString:@"/login"] && [urlQuery objectForKey:@"url"]) {
-            PocketLoginViewController *loginViewController = [[[PocketLoginViewController alloc] initWithNibName:@"PocketLoginViewController" bundle:nil] autorelease];
-            loginViewController.url = urlQuery[@"url"];
-			      loginViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
-						//loginViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-            UIViewController *frontViewController = [self topViewController];
-             [frontViewController presentViewController:loginViewController animated:YES completion:nil];
-            return YES;
-        }
+		}
 		
 		if(!login){
 			login = [self pkt_loadCurrentLoginFromDefaults];
@@ -318,25 +309,6 @@ static PocketAPI *sSharedAPI = nil;
 	}
 	
 	return NO;
-}
-
-- (UIViewController*)topViewController {
-    return [self topViewControllerWithRootViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
-}
-
-- (UIViewController*)topViewControllerWithRootViewController:(UIViewController*)rootViewController {
-    if ([rootViewController isKindOfClass:[UITabBarController class]]) {
-        UITabBarController* tabBarController = (UITabBarController*)rootViewController;
-        return [self topViewControllerWithRootViewController:tabBarController.selectedViewController];
-    } else if ([rootViewController isKindOfClass:[UINavigationController class]]) {
-        UINavigationController* navigationController = (UINavigationController*)rootViewController;
-        return [self topViewControllerWithRootViewController:navigationController.visibleViewController];
-    } else if (rootViewController.presentedViewController) {
-        UIViewController* presentedViewController = rootViewController.presentedViewController;
-        return [self topViewControllerWithRootViewController:presentedViewController];
-    } else {
-        return rootViewController;
-    }
 }
 
 -(NSUInteger)appID{
