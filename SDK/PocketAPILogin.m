@@ -160,7 +160,7 @@ const NSString *PocketAPILoginFailedNotification = @"PocketAPILoginFailedNotific
 	if([PocketAPI hasPocketAppInstalled]){
 		authorizeURL = [NSURL URLWithString:[NSString stringWithFormat:@"pocket-oauth-v1:///authorize?request_token=%@&redirect_uri=%@",requestToken, encodedRedirectURLString]];
 	}else{
-		authorizeURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://getpocket.com/auth/authorize?request_token=%@&redirect_uri=%@",requestToken, encodedRedirectURLString]];
+		authorizeURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://getpocket.com/auth/authorize?force=login&request_token=%@&redirect_uri=%@",requestToken, encodedRedirectURLString]];
 	}
 	
 	[self openURL:authorizeURL];
