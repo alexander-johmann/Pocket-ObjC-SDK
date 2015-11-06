@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "PocketAPI.h"
+#import "PocketAPIApplicationStateWatcher.h"
 
-@interface PocketAPILogin : NSObject <NSCoding, PocketAPIDelegate> {
+@interface PocketAPILogin : NSObject <NSCoding, PocketAPIDelegate, PocketAPIApplicationStateWatcherDelegate> {
 	PocketAPI *API;
 	
 	NSString *uuid; // unique ID for the login process
@@ -18,7 +19,8 @@
 	NSString *accessToken;
 	
 	NSOperationQueue *operationQueue;
-	
+    PocketAPIApplicationStateWatcher *appStateWatcher;
+    
 	id<PocketAPIDelegate> delegate;
 	
 	BOOL didStart;

@@ -8,6 +8,7 @@
 
 #import "PocketAPILogin.h"
 #import "PocketAPIOperation.h"
+#import "PocketAPIApplicationStateWatcher.h"
 
 const NSString *PocketAPIErrorDomain = @"PocketAPIErrorDomain";
 
@@ -62,7 +63,11 @@ const NSString *PocketAPILoginFailedNotification = @"PocketAPILoginFailedNotific
 
 -(void)openURL:(NSURL *)url{
 #if TARGET_OS_IPHONE
-	[[UIApplication sharedApplication] openURL:url];
+    appStateWatcher = [PocketAPIApplicationStateWatcher new];
+    appStateWatcher.delegate = self;
+    [appStateWatcher expectBackgroundMode];
+    
+    [[UIApplication sharedApplication] openURL:url];
 #else
 	[[NSWorkspace sharedWorkspace] openURL:url];
 #endif
@@ -213,6 +218,17 @@ const NSString *PocketAPILoginFailedNotification = @"PocketAPILoginFailedNotific
 			[self openURL:responseURL];
 		}
 	}
+}
+
+#pragma mark - PocketAPIApplicationStateWatcherDelegate
+
+- (void)applicationStateWatcher:(PocketAPIApplicationStateWatcher *)watcher didDetectTransitionSuccess:(BOOL)success {
+    [appStateWatcher release];
+    appStateWatcher = nil;
+    
+    if (!success) {
+        [self pocketAPI:API hadLoginError:[NSError errorWithDomain:(NSString *)PocketAPIErrorDomain code:PocketAPIErrorInterruptedByUser userInfo:@{NSLocalizedDescriptionKey : @"Request was cancelled"}]];
+    }
 }
 
 @end
