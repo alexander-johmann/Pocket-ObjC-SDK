@@ -56,8 +56,9 @@
 	NSString *userAgent;
 }
 
-@property (nonatomic, retain) NSString *consumerKey;
-@property (nonatomic, retain) NSString *URLScheme; // if you do not set this, it is derived from your consumer key
+@property (nonatomic, copy) NSString *consumerKey;
+@property (nonatomic, copy) NSString *URLScheme; // if you do not set this, it is derived from your consumer key
+@property (nonatomic, copy) NSString *keychainAccessGroup;
 
 @property (nonatomic, copy, readonly) NSString *username;
 @property (nonatomic, assign, readonly, getter=isLoggedIn) BOOL loggedIn;
@@ -69,11 +70,11 @@
 +(NSString *)pocketAppURLScheme;
 
 -(void)setConsumerKey:(NSString *)consumerKey;
+-(void)enableKeychainSharingWithKeychainAccessGroup:(NSString *)theKeychainAccessGroup;
 
 -(NSUInteger)appID;
 
-// Simple API
--(void)loginWithDelegate:(id<PocketAPIDelegate>)delegate;
+-(void)loginWithDelegate:(id<PocketAPIDelegate>)delegate; // this method will not do anything if used in an extension
 
 -(void)saveURL:(NSURL *)url
 	  delegate:(id<PocketAPIDelegate>)delegate;
@@ -91,7 +92,7 @@
 			delegate:(id<PocketAPIDelegate>)delegate;
 
 #if NS_BLOCKS_AVAILABLE
--(void)loginWithHandler:(PocketAPILoginHandler)handler;
+-(void)loginWithHandler:(PocketAPILoginHandler)handler; // this method will not do anything if used in an extension
 
 -(void)saveURL:(NSURL *)url
 	   handler:(PocketAPISaveHandler)handler;
@@ -109,9 +110,9 @@
 			 handler:(PocketAPIResponseHandler)handler;
 #endif
 
--(void)logout;
+-(void)logout; // this method will not do anything if used in an extension
 
--(BOOL)handleOpenURL:(NSURL *)url;
+-(BOOL)handleOpenURL:(NSURL *)url; // this method will not do anything if used in an extension
 
 @end
 
