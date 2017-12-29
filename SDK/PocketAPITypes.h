@@ -85,7 +85,10 @@ typedef enum {
 	PocketAPIErrorSignupEmailTaken = 105,
 
 	// Server Problems
-	PocketAPIErrorServerMaintenance = 199
+	PocketAPIErrorServerMaintenance = 199,
+    
+    // Other
+    PocketAPIErrorInterruptedByUser = 300,
 } PocketAPIError;
 
 extern NSString * const PocketAPIErrorDomain;

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63637AC91BECB19700E1955A /* PocketAPIApplicationStateWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 63637AC81BECB19700E1955A /* PocketAPIApplicationStateWatcher.m */; };
 		9D50B34B1A4EEEBA00856233 /* PocketRSSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D50B34A1A4EEEBA00856233 /* PocketRSSParser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		9DF8C4551B0FFEDC00A46A01 /* PocketAPIExtensionSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF8C4541B0FFEDC00A46A01 /* PocketAPIExtensionSafe.m */; };
 		AA0FCA8B1648A8FB005AE7DA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA0FCA8A1648A8FB005AE7DA /* Default-568h@2x.png */; };
@@ -28,6 +29,8 @@
 
 /* Begin PBXFileReference section */
 		456D82AF15E46395002779D3 /* PocketAPI+NSOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PocketAPI+NSOperation.h"; sourceTree = "<group>"; };
+		63637AC71BECB19700E1955A /* PocketAPIApplicationStateWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketAPIApplicationStateWatcher.h; sourceTree = "<group>"; };
+		63637AC81BECB19700E1955A /* PocketAPIApplicationStateWatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PocketAPIApplicationStateWatcher.m; sourceTree = "<group>"; };
 		9D50B3491A4EEEBA00856233 /* PocketRSSParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketRSSParser.h; sourceTree = "<group>"; };
 		9D50B34A1A4EEEBA00856233 /* PocketRSSParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PocketRSSParser.m; sourceTree = "<group>"; };
 		9DF8C4531B0FFEDC00A46A01 /* PocketAPIExtensionSafe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketAPIExtensionSafe.h; sourceTree = "<group>"; };
@@ -141,6 +144,8 @@
 				AA37FB3315769D5700A63400 /* PocketAPI.h */,
 				456D82AF15E46395002779D3 /* PocketAPI+NSOperation.h */,
 				AA37FB3415769D5700A63400 /* PocketAPI.m */,
+				63637AC71BECB19700E1955A /* PocketAPIApplicationStateWatcher.h */,
+				63637AC81BECB19700E1955A /* PocketAPIApplicationStateWatcher.m */,
 				AA9685EF15BDDED900E9F7F1 /* PocketAPILogin.h */,
 				AA9685F015BDDED900E9F7F1 /* PocketAPILogin.m */,
 				AA37FB3515769D5700A63400 /* PocketAPIOperation.h */,
@@ -233,7 +238,11 @@
 				9D50B34B1A4EEEBA00856233 /* PocketRSSParser.m in Sources */,
 				AA37FB4415769E8200A63400 /* main.m in Sources */,
 				AA9685F115BDDED900E9F7F1 /* PocketAPILogin.m in Sources */,
+<<<<<<< HEAD
+				63637AC91BECB19700E1955A /* PocketAPIApplicationStateWatcher.m in Sources */,
+=======
 				9DF8C4551B0FFEDC00A46A01 /* PocketAPIExtensionSafe.m in Sources */,
+>>>>>>> Pocket/master
 				AAD8655815E807BF001F0C0E /* PocketRSSViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,7 +315,11 @@
 		AA37FB13157570ED00A63400 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+<<<<<<< HEAD
+				ENABLE_BITCODE = NO;
+=======
 				DEVELOPMENT_TEAM = EX3VH4YFCH;
+>>>>>>> Pocket/master
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PocketSDK-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -322,6 +335,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				ENABLE_BITCODE = NO;
 				DEVELOPMENT_TEAM = EX3VH4YFCH;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PocketSDK-Prefix.pch";
