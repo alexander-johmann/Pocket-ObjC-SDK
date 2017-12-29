@@ -27,7 +27,7 @@ The project download includes the SDK and an example project.
 The SDK includes all necessary source files and does not have any other dependencies.
 
 
-![](https://s3.amazonaws.com/pocket-assets/adding-sdk.png "Dragging the SDK to your XCode project")
+![](https://s3.amazonaws.com/pocket-assets/adding-sdk.png "Dragging the SDK to your Xcode project")
 
 
 ![](https://s3.amazonaws.com/pocket-assets/adding-security-framework.png "Security.framework is in the Link Binary With Libraries Build Phase")
@@ -118,7 +118,7 @@ At this point you’ve properly installed the SDK and can now start making reque
 	    }
 	}];
 
-The example above uses blocks which requires iOS 4.0 or greater. If you have a need to support iOS 3.0, you can use the [linkto:delegate or operation based methods].
+The example above uses blocks which requires iOS 4.0 or greater. If you have a need to support iOS 3.0, you can use the delegate or operation based methods.
 
 
 
@@ -157,6 +157,23 @@ To call other arbitrary APIs, pass the API's method name, the HTTP method name, 
 	    // handle the response here
 	 }];
 
+
+
+##Enabling Extension Support##
+
+The first step is to "Enable Keychain Sharing" in both your app and extension capabilities in Xcode.
+
+![](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/Art/4_enablekeychain2_2x.png "Enable Keychain Sharing")
+
+See [Configuring Keychain Sharing](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html#//apple_ref/doc/uid/TP40012582-CH26-SW15) for more information.
+
+Final step is to add the following before you initialize the PocketAPI in your main app and extension:
+
+	[[PocketAPI sharedAPI] enableKeychainSharingWithKeychainAccessGroup:@"Your Keychain Access Group"];
+	[[PocketAPI sharedAPI] setConsumerKey:@"Your Consumer Key Here"];
+
+After enabling keychain sharing, the app and extensions can access data that is securely stored in the keychain. From now on you can use the default methods of the PocketAPI class to save links from within extensions. See [Step 6: Start Saving to Pocket!](#step-6-start-saving-to-pocket) for more details.
+
 Acknowledgements
 ================
 
@@ -168,7 +185,7 @@ The Pocket SDK uses the following open source software:
 License
 =======
 
-Copyright (c) 2012 Read It Later, Inc.
+Copyright (c) 2015 Read It Later, Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
