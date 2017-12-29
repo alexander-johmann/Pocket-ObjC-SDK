@@ -120,12 +120,15 @@ static PocketAPI *sSharedAPI = nil;
 }
 
 +(BOOL)hasPocketAppInstalled{
+	return NO;
+/*
 #if TARGET_OS_IPHONE
     NSURL *pktURLScheme = [NSURL URLWithString:[[self pocketAppURLScheme] stringByAppendingString:@":"]];
 	return [[UIApplication pkt_sharedApplication] pkt_canOpenURL:pktURLScheme];
 #else
 	return NO;
 #endif
+*/
 }
 
 +(NSString *)pkt_hashForConsumerKey:(NSString *)consumerKey accessToken:(NSString *)accessToken{
